@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		
+        <class name="cn.hibernate0924.onetomany.doubl.Classes" >
+        	
+        	<id name="cid" column="cid" type="java.lang.Long">
+        		<generator class="increment" />
+        	</id>
+        	
+        	<property name="cname" column="cname" type="string"/>
+        	
+        	<property name="description" column="description" type="string"/>
+        	
+        	<!-- 
+        		cascade指的是对象对对象的操作
+        		inverse指的是对象对关系的操作
+        	 -->
+        	 <set name="students" cascade="save-update" inverse="true">
+        	 	<!-- key外键的描述,column就代表外键的名字 -->
+        	 	<key>
+        	 		<column name="cid"></column>
+        	 	</key>
+        	 	
+        	 	<!-- classes和哪个对象进行关联 -->
+        	 	<one-to-many class="cn.hibernate0924.onetomany.doubl.Student" />
+        	 </set> 
+        	  	
+        </class>    
+
+</hibernate-mapping>

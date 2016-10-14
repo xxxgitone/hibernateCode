@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		<!-- 描述持久化类,name位类的全名，table为表明，可以不写，默认跟类名一样 -->
+		
+        <class name="cn.hibernate0924.domain.Person" table="person">
+        
+        	<!-- 主键，name为属性的名称 -->
+        	
+        	<id name="pid" column="pid" type="java.lang.Long">
+        		<!-- 主键产生器 
+        			1.increment 先查询该表中的主键最大值，然后将最大值加1；效率较低，主键值连续
+        			2.identity  根据底层数据库的自增生成，效率高，但主键不连贯
+        			3.assigned 手动赋值
+        		-->
+        		
+        		<generator class="increment" />
+        	</id>
+        	
+        	<!-- 字段名 -->
+        	<property name="pname" column="pname" type="string"/>
+        	
+        	<property name="psex" column="psex" type="string"/>
+        	     	
+        </class>    
+
+</hibernate-mapping>

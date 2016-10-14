@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		
+        <class name="cn.hibernate0924.onetomany.doubl.Student" >
+        	
+        	<id name="sid" column="sid" type="java.lang.Long">
+        		<generator class="increment" />
+        	</id>
+        	
+        	<property name="sname" column="sname" type="string"/>
+        	
+        	<property name="description" column="description" type="string"/>
+        	
+        	<!-- 
+        		多对一   name为student持久化对象中的  Classes classes；
+        			在多对一中没有inverse
+        				对student操作就是维护关系
+        	 -->
+        	 <many-to-one name="classes" class="cn.hibernate0924.onetomany.doubl.Classes" cascade="all">
+	        	 <!-- 
+	        	 	class关联哪一个
+	        		外键  描述了通过student建立和classes之间的联系
+	        	 -->
+        	 	<column name="cid" />
+        	 </many-to-one>
+        	 
+        </class>    
+
+</hibernate-mapping>

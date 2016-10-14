@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+		
+        <class name="cn.hibernate0924.onetomany.single.Classes" >
+        	
+        	<id name="cid" column="cid" type="java.lang.Long">
+        		<generator class="increment" />
+        	</id>
+        	
+        	<property name="cname" column="cname" type="string"/>
+        	
+        	<property name="description" column="description" type="string"/>
+        	 
+        	 <!-- 
+        	 	set元素和类中set集合对应
+        	 		*从外键的角度建立classes和students之间的关系
+        	 		*从类与类的角度建立classes和student之间的关系
+        	 		
+        	 		cascade级联  不在程序中所保存的操作，而交给hibernate来做
+        	 		
+        	 		inverse:是用来维护关系的，默认值false维护 ,默认时可不写    true表示不维护
+        	 			*要么是一对多
+        	 			*要么是多对多
+        	 			*inverse所在映射文件对应的持久化对象来维护关系
+        	  -->  
+        	   <!-- name为set集合里的 -->
+        	 <set name="students" cascade="save-update" inverse="false">
+        	 	<!-- key外键的描述,column就代表外键的名字 -->
+        	 	<key>
+        	 		<column name="cid"></column>
+        	 	</key>
+        	 	
+        	 	<!-- classes和哪个对象进行关联 -->
+        	 	<one-to-many class="cn.hibernate0924.onetomany.single.Student" />
+        	 </set> 
+        	  	
+        </class>    
+
+</hibernate-mapping>
