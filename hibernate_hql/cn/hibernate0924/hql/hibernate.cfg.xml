@@ -53,6 +53,7 @@
 	-->
 	<mapping resource="cn/hibernate0924/hql/Classes.hbm.xml" />
 	<mapping resource="cn/hibernate0924/hql/Student.hbm.xml" />
+	<mapping resource="cn/hibernate0924/hql/Course.hbm.xml" />
 
 </session-factory>
 </hibernate-configuration>

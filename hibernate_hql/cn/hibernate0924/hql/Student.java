@@ -1,5 +1,7 @@
 package cn.hibernate0924.hql;
 
+import java.util.Set;
+
 public class Student {
 	private Long sid;
 	private String sname;
@@ -7,6 +9,16 @@ public class Student {
 	
 	
 	private Classes classes;
+	
+	private Set<Course> courses;
+
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
+	}
 
 	public Long getSid() {
 		return sid;

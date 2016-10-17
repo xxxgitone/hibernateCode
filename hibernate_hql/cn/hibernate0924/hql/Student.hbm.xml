@@ -25,5 +25,11 @@
     		 -->
     		<column name="cid"></column>
     	</many-to-one>
+    	
+    	<set name="courses" table="student_course">
+    		<key column="sid"/>
+    		<many-to-many class="cn.hibernate0924.hql.Course" column="cid"/>
+    	</set>
+    	
     </class>
 </hibernate-mapping>
