@@ -1,5 +1,8 @@
 package cn.hibernate0924.sessionFactory.cache;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -145,6 +148,25 @@ public class TowCacheTest {
 		}
 		transaction.commit();
 		Thread.sleep(1000);
+		session.close();
+	}
+	/**
+	 * 查询缓存
+	 *   * 查询缓存是建立在二级缓存基础之上的
+	 *   * 查询缓存不是默认开启的，需要设置
+	 *       <property name="cache.use_query_cache">true</property>
+	 *   * 在代码中进行设置
+	 *      query.setCacheable(true);
+	 */
+	@Test
+	public void testQuery(){
+		Session session = sessionFactory.openSession();
+		Query query=session.createQuery("from Classes");
+		query.setCacheable(true);
+		List<Classes> classesList = query.list();
+		query=session.createQuery("from Classes");
+		query.setCacheable(true);
+		classesList = query.list();
 		session.close();
 	}
 }
