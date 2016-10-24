@@ -16,7 +16,8 @@ public class PersonTest {
 		person.setPid(9L);
 		person.setPname("er");
 		person.setPsex("op");
-		System.out.println(person.toString());
+		
+		
 		Configuration configuration = new Configuration();
 		// 加载配置文件
 		configuration.configure("hibernate.cfg.xml");
